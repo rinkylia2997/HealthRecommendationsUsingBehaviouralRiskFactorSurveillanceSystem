@@ -1,0 +1,1 @@
+filter numbers to clean text = \d+
