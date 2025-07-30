@@ -79,15 +79,25 @@ In the BRFSS dataset, there were a couple of data inconsistencies that had to be
 
 [EDA Report](https://github.com/rinkylia2997/HealthRecommendationsUsingBehaviouralRiskFactorSurveillanceSystem/blob/main/notebooks/002-rabraham-EDA.ipynb)
 
-* **Data Validation:** The wrangled dataset has numerical features including height, weight.
+* **Data Validation:** The wrangled dataset has numerical features including height, weight. Since these are demographic features we need to ensure that these values are within acceptable ranges. To ensure data validity we:
 
->  We check the distribution of these variables by age group and we observe that some of them have outliers by visualizing using boxplots and have skewed distribution by plotting histograms. 
->  We also verify if height and weight values correspond to bmi feature to ensure data consistency.
->  We check if there is a pattern of outliers with age since we are interested to know smoking effects by age.
+>  check the distribution of these variables by age group and notice that some of them have outliers by visualizing using boxplots and have skewed distribution by plotting histograms. 
+>  verify if height and weight values correspond to bmi feature to ensure data consistency.
+>  check if there is a pattern of outliers with age since we are interested to know smoking effects by age.
+
+![Outlier plot](./README_files/height_weight_unclean_scatter.png)  
+                               |
+                               |   
 
 ![Data Validation](./README_files/height_weight_scatterplot.png) 
 
-* **Selection of Target Variable:** Our original aim is to evaluate which features contribute most to identifying a smoker. As a survey usually involves enquiring about a question in multiple forms, there were various labels related to smoking including - Smoked at Least 100 Cigarettes? Frequency of Days Now Smoking, Use of Smokeless Tobacco Products and many calculated variables to aggregate survey information. Part of EDA was to determine a good target variable to be used in our prediction model. We chose to proceed with _RFSMOK3 due to it having least number of classes and least number of missing values and most representative of a smoker compared to other variables.
+* **Selection of Target Variable:** Our original aim is to evaluate which features contribute most to identifying a smoker. As surveys usually involve enquiring about a question in multiple forms, there were various labels related to smoking including:
+> Smoked at Least 100 Cigarettes? 
+> Frequency of Days Now Smoking 
+> Use of Smokeless Tobacco Products and 
+> many calculated variables to aggregate survey information. 
+
+Part of EDA was to determine a good target variable to be used in our prediction model. We chose to proceed with _RFSMOK3 due to it having least number of classes and least number of missing values and most representative of a smoker compared to other variables. Due to fewer categories of _RFSMOK3, we choose it as our target variable.
 
 ![Target Variable Heatmap](./README_files/target_variable_heatmap.png)
 
@@ -154,46 +164,44 @@ This table maps each variable from the feature set to relevant HBM construct(s) 
 ---
 
 ### Key:
-- **Susceptibility:** Perception of risk for smoking-related illness.
-- **Severity:** Perceived seriousness of consequences.
-- **Benefits:** Perceived advantages of quitting or health action.
-- **Barriers:** Perceived obstacles to quitting or health action.
-- **Cues to Action:** Triggers or reminders to change behavior.
-- **Self-Efficacy:** Confidence in ability to quit or maintain health.
-- **Other:** Population descriptors for stratification and context.
+> **Susceptibility:** Perception of risk for smoking-related illness.
+> **Severity:** Perceived seriousness of consequences.
+> **Benefits:** Perceived advantages of quitting or health action.
+> **Barriers:** Perceived obstacles to quitting or health action.
+> **Cues to Action:** Triggers or reminders to change behavior.
+> **Self-Efficacy:** Confidence in ability to quit or maintain health.
+> **Other:** Population descriptors for stratification and context.
 
+**Notes:** Some variables appear in multiple constructs due to their multifaceted nature.
 ---
 
-**Notes:**
-- Some variables appear in multiple constructs due to their multifaceted nature.
-
-* **Relationship of each construct with Target Variable:** Once BRFSS features have been mapped to HBM features, we deal with 
-> Class imbalance : Combine less frequent groups into a single group simplify modeling
-> Visualize relationship with Target Variable _RFSMOK3 : Plot bar plots for categorical and numerical variables and assess patterns
-> Handle missing values codes for categorical variables as per Code Report: Convert codes 7 to Not sure and 9 Missing together as Not sure
-> Compute Crammer's V Statistic for all categorical variables: To check relationship between categorical variables and drop the ones that exhibit multicollinearity.
+* **Relationship of each construct with Target Variable:** Once BRFSS features have been mapped to HBM features, we deal with:
+> Class imbalance : Combine less frequent groups into a single group simplify modeling<br>
+> Visualize relationship with Target Variable _RFSMOK3 : Plot bar plots for categorical and numerical variables and assess patterns<br>
+> Handle missing values codes for categorical variables as per Code Report: Convert codes 7 to Not sure and 9 Missing together as Not sure<br>
+> Compute Crammer's V Statistic for all categorical variables: To check relationship between categorical variables and drop the ones that exhibit multicollinearity.<br>
 
 * **Binning zero-imbalance features into fewer buckets:** Variables like number of days of poor mental and physical health have a lot of zeros and to make processing simpler we binned them into managable buckets.
 
-* **Evaluating Data Leakage:** Since there are numerous categorical variables and possibility that our target variable _RFSMOK3 is closely related, we wanted to make sure our model is free of these features. We perform:
-> Chi-square test
+* **Evaluating Data Leakage:** Since there are numerous categorical variables, there was a possibility that target variable _RFSMOK3 is closely related to some of them, we wanted to make sure our model is free of these features. We perform:
+> Chi-square test<br>
 > Mutual Information test
-
 
 ## 5. Feature Engineering 
 
 [Feature Engineering Notebook](https://github.com/rinkylia2997/HealthRecommendationsUsingBehaviouralRiskFactorSurveillanceSystem.git)
 
-This notebook contains preparation tasks of the explored dataset, including encoding Categorical and standardizing numeric features. 
+This notebook contains preparation tasks of the explored dataset, including one-hot encoding categorical and standardizing numeric features. 
 The datasets both encoded and original are split into test and train sets to ensure that all the models are evaluated against same data i.e it is a way of setting seed prior to training the model. 
 
-We finish this section by saving both encoded and original datasets because we want to resort to trial and error approach of which yields a better smoking prediction model with high recall, F1-score and PR-AUC. 
+We finish this section by saving both encoded and original datasets to use trial and error approach of which yields a better smoking prediction model with high recall, F1-score and PR-AUC. 
 
 ## 6. Modeling (Machine Learning Algorithms) and Analysis
 
 [Modeling Notebook](https://github.com/rinkylia2997/HealthRecommendationsUsingBehaviouralRiskFactorSurveillanceSystem/blob/main/notebooks/004-modeling.ipynb)
 
-We begin by importing both encoded and original datasets from Feature Engineering Notebook. I wanted to evaluate smoking prediction using 2 algorithms [CatBoost and LightGBM]-  both belonging to Gradient Boost algorithms. I opted for gradient boosting since our dataset has a mix of categorical and numeric variables and having an ensemble learning method will yield a stronger predictor by combining many weak learners. Each algorithm is trained with different hyperparameters i.e a base model with default parameters and a tuned model by providing a list of hyperparameters. The two modeling algorithms applied on BRFSS dataset are:
+We begin by importing both encoded and original datasets from Feature Engineering Notebook. I wanted to evaluate smoking prediction using 2 algorithms [CatBoost and LightGBM]-  both belonging to Gradient Boost algorithms. 
+I opted for gradient boosting since our dataset has a mix of categorical and numeric variables and having an ensemble learning method will yield a stronger predictor by combining many weak learners. Each algorithm is trained with different hyperparameters i.e a base model with default parameters and a tuned model by providing a list of hyperparameters. The two modeling algorithms applied on BRFSS dataset are:
 
 > 1. **CatBoost:** I chose to train the original dataset (Features not encoded) using this algorithm since it natively handles categorical values. The training time for this model was on the higher end averaging ~xxxx for both tuned and untuned models.
 Here's a summary of performance of Base and Tuned Catboost models
