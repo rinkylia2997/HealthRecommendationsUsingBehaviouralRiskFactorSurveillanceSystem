@@ -57,17 +57,23 @@ I chose to build a prediction model with higher Recall and F1-score to be aggres
 
 In the BRFSS dataset, there were a couple of data inconsistencies that had to be taken care.
 
-* **Problem 1:** The dataset was gathered from telephonic survey so either due to personal reservations of revealing information or due to some issues like lack of time during data collection there were large instances of missing data. <br>**Solution:** Features with missing values > 0.75 threshold was dropped, this brought feature set from 645 columns to 87 columns
+* **Problem 1:** The dataset was gathered from telephonic survey so either due to personal reservations of revealing information or due to some issues like lack of time during data collection there were large instances of missing data. <br>
+> **Solution:** Features with missing values > 0.75 threshold was dropped, this brought feature set from 645 columns to 87 columns
 
-* **Problem 2:** As it was a survey dataset, many features served as identifiers of the records and provided less information on smoking habits. These included features like phone number, sequence number.<br>**Solution:** These features were dropped from the dataset to avoid less interference during data exploration and feature engineering
+* **Problem 2:** As it was a survey dataset, many features served as identifiers of the records and provided less information on smoking habits. These included features like phone number, sequence number.<br>
+> **Solution:** These features were dropped from the dataset to avoid less interference during data exploration and feature engineering
 
-* **Problem 3:** There were many features that captured same information. These included have features like weight in pounds, weight in kgs, calculated weight variable which essential information.<br>**Solution:** We dropped some features by comparing missing values within each type and retaining the most information feature
+* **Problem 3:** There were many features that captured same information. These included have features like weight in pounds, weight in kgs, calculated weight variable which essential information.<br>
+> **Solution:** We dropped some features by comparing missing values within each type and retaining the most information feature
 
-* **Problem 4:** A lot of features were of type categorical but were represented as float since the values were encoded as codes in [Code Book Report](https://www.cdc.gov/brfss/annual_data/2015/pdf/codebook15_llcp.pdf). <br>**Solution:** This was handled by appropriately converting the features to categorical or ordinal or int/float appropriately.
+* **Problem 4:** A lot of features were of type categorical but were represented as float since the values were encoded as codes in [Code Book Report](https://www.cdc.gov/brfss/annual_data/2015/pdf/codebook15_llcp.pdf). <br>
+> **Solution:** This was handled by appropriately converting the features to categorical or ordinal or int/float appropriately.
 
-* **Problem 5:** Some features had erroroneous values. This included features like year that had some values of 2016 when our analysis was conducted for data collected between 2011-2015. <br>**Solution:** These issues were corrected by imputing the columns with correct values based on conditional filtering.
+* **Problem 5:** Some features had erroroneous values. This included features like year that had some values of 2016 when our analysis was conducted for data collected between 2011-2015. <br>
+> **Solution:** These issues were corrected by imputing the columns with correct values based on conditional filtering.
 
-* **Problem 6:** Some features had values belonging to different metric systems. This included features like height and weight were some record values were represented in inches and some in meters, similarly in kilograms and pounds.<br>**Solution:** This was handled by conditional value conversion based on the feature type and conversion formulas.
+* **Problem 6:** Some features had values belonging to different metric systems. This included features like height and weight were some record values were represented in inches and some in meters, similarly in kilograms and pounds.<br>
+> **Solution:** This was handled by conditional value conversion based on the feature type and conversion formulas.
 
 ## 4. EDA
 
@@ -80,7 +86,6 @@ In the BRFSS dataset, there were a couple of data inconsistencies that had to be
 >  We check if there is a pattern of outliers with age since we are interested to know smoking effects by age.
 
 ![Data Validation](./README_files/height_weight_scatterplot.png) 
-
 
 * **Selection of Target Variable:** Our original aim is to evaluate which features contribute most to identifying a smoker. As a survey usually involves enquiring about a question in multiple forms, there were various labels related to smoking including - Smoked at Least 100 Cigarettes? Frequency of Days Now Smoking, Use of Smokeless Tobacco Products and many calculated variables to aggregate survey information. Part of EDA was to determine a good target variable to be used in our prediction model. We chose to proceed with _RFSMOK3 due to it having least number of classes and least number of missing values and most representative of a smoker compared to other variables.
 
