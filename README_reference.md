@@ -20,9 +20,9 @@ Some questions I wanted to answer through this project are:
 The Behavioral Risk Factor Surveillance System (BRFSS) is the nation's premier system of health-related telephone surveys that collect state data about U.S. residents regarding their health-related risk behaviors, chronic health conditions, and use of preventive services. Factors assessed by the BRFSS include tobacco use, health care coverage, HIV/AIDS knowledge or prevention, physical activity, and fruit and vegetable consumption. Data are collected from a random sample of adults (one per household). 
 BRFSS Dataset from Kaggle API was gathered for years 2011-2015 and contained 2380047 rows and 645 columns. The reason to choose this was because I wanted to have as many features as possible to evaluate the predictors of smoking.To view the BRFSS data using Kaggel API and the code book report explaining the variables click on the links below:
 
-> * [BRFSS Kaggle Dataset](https://www.kaggle.com/datasets/cdc/behavioral-risk-factor-surveillance-system/data)
+* [BRFSS Kaggle Dataset](https://www.kaggle.com/datasets/cdc/behavioral-risk-factor-surveillance-system/data)
 
-> * [Code Book Report](https://www.cdc.gov/brfss/annual_data/2015/pdf/codebook15_llcp.pdf)
+* [Code Book Report](https://www.cdc.gov/brfss/annual_data/2015/pdf/codebook15_llcp.pdf)
 
 ## 2. Method
 
@@ -49,7 +49,7 @@ i.e. If the individual has heart problems does it make him more likely to be aff
 
 **WINNER: Smoking Prediction Model with good recall and F1-score + HBM construct mapping**
 
-I chose to build a prediction model with higher Recall and F1-score to be aggressive in identifying smokers. After this, the features were mapped to the constructs per its definition in the [Code Book Report](https://www.cdc.gov/brfss/annual_data/2015/pdf/codebook15_llcp.pdf). 
+I chose to build a prediction model with higher Recall and F1-score to be aggressive in identifying smokers. As a next step, these features were mapped to the constructs per its definition in the [Code Book Report](https://www.cdc.gov/brfss/annual_data/2015/pdf/codebook15_llcp.pdf). 
 
 ## 3. Data Cleaning 
 
