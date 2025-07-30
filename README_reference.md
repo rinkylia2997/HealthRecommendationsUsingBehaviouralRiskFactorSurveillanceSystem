@@ -1,14 +1,14 @@
 ![cover_photo](./README_files/cover_photo.jpg)
 # Why do people smoke ?
 
-*On an average there were ~7 million deaths globally in the year 2023 due to smoking, of which ~500,000 deaths were from USA alone. If we evaluate the trends of smoking from 2011 - 2023, we notice that there is a steady decline in smoking prevalence from (15-19%) during 2011-2015, approx. (11-12%) during 2022. Some interpretations for it are :
-> * In the U.S., smoking rates have steadily declined over the last decade thanks to policy initiatives, media campaigns, taxation, and public health programs.
-> * Globally, while smoking rates (%) have fallen, population growth has driven the absolute number of smokers upward, and the smoking-related death toll remains persistently high.
+On an average there were ~7 million deaths globally in the year 2023 due to smoking, of which ~500,000 deaths were from USA alone. If we evaluate the trends of smoking from 2011 - 2023, we notice that there is a steady decline in smoking prevalence from (15-19%) during 2011-2015, approx. (11-12%) during 2022. Some observations include:
+> * In the U.S, smoking rates have steadily declined over the last decade thanks to policy initiatives, media campaigns, taxation, and public health programs.
+> * Globally, while smoking rates have fallen, population growth has driven the absolute number of smokers upward, and the smoking-related death toll remains persistently high.
 > * Notably, older adults (65+) in the U.S. buck the trend, showing a modest increase in smoking compared to broader declines in younger cohorts
 
 Since habits like smoking stems from psychological normalization of the act, in this project I wanted to evaluate what constructs of the Health Belief Model (HBM) influence it. The bigger effort is also to improve Public policies surrounding dangers of smoking in a way that can help smokers identify their behaviour patterns. I believe with proper messaging of the dangers of smoking but delving into psychological factors, we can bring about real change in the number of current smokers.
 
-Some primary questions I wanted to answer through this project are:
+Some questions I wanted to answer through this project are:
 
 > **Question 1:** What constructs defined by Health Belief Model (HBM) contribute most towards the habit of smoking ? Does this trend vary by age group ?
 
@@ -17,10 +17,8 @@ Some primary questions I wanted to answer through this project are:
 
 ## 1. Data
 
-The Behavioral Risk Factor Surveillance System (BRFSS) is the nation's premier system of health-related telephone surveys that collect state data about U.S. residents regarding their health-related risk behaviors, chronic health conditions, and use of preventive services. Factors assessed by the BRFSS include tobacco use, health care coverage, HIV/AIDS knowledge or prevention, physical activity, and fruit and vegetable consumption. Data are collected from a random sample of adults (one per
-household). To view the BRFSS data using Kaggel API and the code book report explaining the variables click on the links below:
-
-BRFSS Dataset from Kaggle API was gathered for years 2011-2015 and contained 2380047 rows and 645 columns. The reason to choose this was because I wanted to have as many features as possible to evaluate the predictors of smoking.
+The Behavioral Risk Factor Surveillance System (BRFSS) is the nation's premier system of health-related telephone surveys that collect state data about U.S. residents regarding their health-related risk behaviors, chronic health conditions, and use of preventive services. Factors assessed by the BRFSS include tobacco use, health care coverage, HIV/AIDS knowledge or prevention, physical activity, and fruit and vegetable consumption. Data are collected from a random sample of adults (one per household). 
+BRFSS Dataset from Kaggle API was gathered for years 2011-2015 and contained 2380047 rows and 645 columns. The reason to choose this was because I wanted to have as many features as possible to evaluate the predictors of smoking.To view the BRFSS data using Kaggel API and the code book report explaining the variables click on the links below:
 
 > * [BRFSS Kaggle Dataset](https://www.kaggle.com/datasets/cdc/behavioral-risk-factor-surveillance-system/data)
 
