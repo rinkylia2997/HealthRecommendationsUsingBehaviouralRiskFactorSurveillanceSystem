@@ -1,4 +1,4 @@
-![cover_photo](./README_files/cover_photo.jpg)
+![cover_photo](./README_files/cover_photo_2.png)
 # Why do people smoke ?
 
 On an average there were ~7 million deaths globally in the year 2023 due to smoking, of which ~500,000 deaths were from USA alone. If we evaluate the trends of smoking from 2011 - 2023, we notice that there is a steady decline in smoking prevalence from (15-19%) during 2011-2015, approx. (11-12%) during 2022. Some observations include:
