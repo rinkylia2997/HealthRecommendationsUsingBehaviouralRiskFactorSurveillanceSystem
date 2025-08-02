@@ -107,59 +107,57 @@ Comprehensive Mapping of Variables to Health Belief Model (HBM) Constructs
 
 This table maps each variable from the feature set to relevant HBM construct(s) or Other category.
 
-| Variable     | HBM Construct(s)     | Explanation in Smoking Context |
-|--------------|----------------------|--------------------------------|
-| _STATE       | Other          | State of residence; may influence smoking rates due to local policies, culture, resources. |
-| DISPCODE     | Other          | Disposition code; administrative, may relate to survey response classification. |
-| GENHLTH      | Susceptibility, Severity | General health status; poorer health can reflect higher susceptibility to smoking-related complications and greater perceived severity. |
-| PHYSHLTH     | Severity             | Physical health; reflects impact/severity of health conditions, including those caused by smoking. |
-| MENTHLTH     | Severity             | Mental health status; poor mental health can increase perceived severity and is associated with smoking initiation/maintenance. |
-| HLTHPLN1     | Benefits, Barriers   | Health plan coverage; having insurance may increase perceived benefits of quitting and decrease barriers to accessing cessation resources. |
-| PERSDOC2     | Benefits, Cues to Action | Personal doctor; regular healthcare can provide cues to quit and increase perceived benefits. |
-| MEDCOST      | Barriers             | Cost of medical care; higher costs may be a barrier to accessing cessation support or healthcare. |
-| CHECKUP1     | Benefits, Cues to Action | Routine checkup; can trigger cues to action through advice, and reinforce benefits of quitting. |
-| CVDINFR4     | Susceptibility, Severity | History of heart attack; increases perceived susceptibility and severity of smoking-related illness. |
-| CVDCRHD4     | Susceptibility, Severity | Coronary heart disease; similar rationale as above. |
-| CVDSTRK3     | Susceptibility, Severity | Stroke; increases perceived susceptibility and severity. |
-| ASTHMA3      | Susceptibility, Severity | Asthma status; higher risk/severity from smoking. |
-| CHCSCNCR     | Susceptibility, Severity | Skin cancer; reflects past health issues, may increase risk perception. |
-| CHCOCNCR     | Susceptibility, Severity | Other cancer; similar rationale. |
-| CHCCOPD1     | Susceptibility, Severity | COPD; directly linked to smoking, increases risk/severity perception. |
-| HAVARTH3     | Susceptibility, Severity | Arthritis; may influence perceived severity of health issues, less direct link to smoking. |
-| ADDEPEV2     | Severity, Self-Efficacy, Susceptibility | Depression diagnosis; impacts severity perception, may affect confidence in quitting, and increases susceptibility. |
-| CHCKIDNY     | Susceptibility, Severity | Kidney disease; increases susceptibility/severity. |
-| DIABETE3     | Susceptibility, Severity | Diabetes; increases susceptibility/severity for smoking-related complications. |
-| SEX          | Other           | Biological sex; influences prevalence and patterns of smoking. |
-| MARITAL      | Other           | Marital status; can affect social support, risk behaviors. |
-| RENTHOM1     | Other, Barriers | Home ownership; socioeconomic factor, may influence barriers to cessation. |
-| VETERAN3     | Other, Barriers | Veteran status; population segment with distinct smoking risks and may affect access to support. |
-| CHILDREN     | Other, Cues to Action | Number of children; Other detail, may serve as cue to quit for parental health role. |
-| WEIGHT2      | Other, Self-Efficacy | Weight; health status, may be associated with smoking and other lifestyle factors, confidence in healthy habits. |
-| HEIGHT3      | Other, Self-Efficacy | Height; basic physical characteristic, may relate to physical health and self-efficacy. |
-| QLACTLM2     | Severity, Self-Efficacy, Cues to Action | Activity limitation due to health; reflects severity, may affect confidence in quitting, can trigger action. |
-| USEEQUIP     | Barriers, Severity    | Use of special equipment; indicates limitations or barriers to health behaviors, reflects severity. |
-| EXERANY2     | Benefits, Cues to Action, Self-Efficacy | Physical activity; reflects benefits of healthy behaviors, cue for action, and personal confidence. |
-| PNEUVAC3     | Benefits, Cues to Action, Susceptibility | Pneumonia vaccine; indicates proactive health behaviors, may serve as cue to quit, and reflect susceptibility. |
-| HIVTST6      | Benefits, Cues to Action, Susceptibility | HIV testing; proactive health behavior, may coincide with cues/advice to quit, and reflect susceptibility. |
-| _RFHLTH      | Susceptibility, Severity | Overall health risk factor; increases perceived susceptibility and reflects severity of illness. |
-| _HCVU651     | Other           | Age under 65 indicator; helps stratify risk and prevalence. |
-| _LTASTH1     | Susceptibility        | Lifetime asthma indicator; increases risk perception. |
-| _CASTHM1     | Susceptibility        | Current asthma indicator; increases risk perception. |
-| _ASTHMS1     | Susceptibility, Cues to Action | Asthma status summary; increases risk perception, may serve as cue. |
-| _DRDXAR1     | Susceptibility        | Arthritis diagnosis; may increase risk perception. |
-| _AGE65YR     | Other           | Age 65+ indicator; older adults have distinct smoking risk patterns. |
-| _AGE_G       | Other           | Age group; age is a major factor in smoking patterns. |
-| _RFBMI5      | Susceptibility, Self-Efficacy | BMI risk factor; high BMI may increase perceived health risk and confidence in managing weight. |
-| _CHLDCNT     | Other, Cues to Action | Child count; Other context, may influence cues to quit. |
-| _EDUCAG      | Other, Barriers | Education group; affects health literacy and smoking risk, may increase barriers. |
-| _INCOMG      | Other, Barriers | Income group; lower income increases barriers to cessation, affects risk. |
-| _RFSMOK3     | Susceptibility, Severity | Smoking risk status; direct indicator for prediction, reflects perceived risk/severity. |
-| DRNKANY5     | Cues to Action        | Alcohol use; may act as a cue for risky behaviors and co-occurs with smoking. |
-| DROCDY3_     | Cues to Action        | Days drank alcohol; can trigger or signal increased risk-taking. |
-| _RFBING5     | Cues to Action        | Binge drinking; a strong cue for risky health behaviors, including smoking. |
-| _TOTINDA     | Benefits, Self-Efficacy | Total physical activity; benefit of healthy habits and confidence in maintaining them. |
-| _RFSEAT3     | Cues to Action, Self-Efficacy | Seatbelt use; proxy for health cues and self-care/confidence in healthy behaviors. |
-| YEAR         | Other           | Survey year; temporal context for trends and policy impact. |
+| Variable    | HBM Construct(s)                        | Explanation |
+|-------------|-----------------------------------------|-------------|
+| GENHLTH     | Susceptibility, Severity                | General health status; poorer health can reflect higher susceptibility to smoking-related complications and greater perceived severity. |
+| CVDINFR4    | Susceptibility, Severity                | History of heart attack; increases perceived susceptibility and severity of smoking-related illness. |
+| CVDCRHD4    | Susceptibility, Severity                | Coronary heart disease; similar rationale as above. |
+| CVDSTRK3    | Susceptibility, Severity                | Stroke; increases perceived susceptibility and severity. |
+| ASTHMA3     | Susceptibility, Severity                | Asthma status; higher risk/severity from smoking. |
+| CHCSCNCR    | Susceptibility, Severity                | Skin cancer; may increase risk perception. |
+| CHCOCNCR    | Susceptibility, Severity                | Other cancer; similar rationale. |
+| CHCCOPD1    | Susceptibility, Severity                | COPD; directly linked to smoking, increases risk/severity perception. |
+| HAVARTH3    | Susceptibility, Severity                | Arthritis; may influence perceived severity of health issues. |
+| ADDEPEV2    | Severity, Self-Efficacy, Susceptibility | Depression diagnosis; affects severity, quitting confidence, and susceptibility. |
+| CHCKIDNY    | Susceptibility, Severity                | Kidney disease; increases susceptibility/severity. |
+| DIABETE3    | Susceptibility, Severity                | Diabetes; increases smoking-related complication risk. |
+| _RFHLTH     | Susceptibility, Severity                | Overall health risk factor. |
+| _LTASTH1    | Susceptibility                          | Lifetime asthma indicator. |
+| _CASTHM1    | Susceptibility                          | Current asthma indicator. |
+| _ASTHMS1    | Susceptibility, Cues to Action          | Asthma summary; may serve as cue. |
+| _DRDXAR1    | Susceptibility                          | Arthritis diagnosis. |
+| _RFBMI5     | Susceptibility, Self-Efficacy           | High BMI; reflects perceived risk and self-confidence. |
+| HLTHPLN1    | Benefits, Barriers                      | Insurance may increase perceived benefits and reduce barriers. |
+| CHECKUP1    | Benefits, Cues to Action                | Routine checkup; triggers cues and reinforces benefits. |
+| PERSDOC2    | Benefits, Cues to Action                | Having a personal doctor offers support and cues. |
+| EXERANY2    | Benefits, Cues to Action, Self-Efficacy | Physical activity; indicates benefits, triggers, and confidence. |
+| PNEUVAC3    | Benefits, Cues to Action, Susceptibility| Pneumonia vaccine; proactive behavior. |
+| HIVTST6     | Benefits, Cues to Action, Susceptibility| HIV testing; reflects cues and benefits. |
+| _TOTINDA    | Benefits, Self-Efficacy                 | Physical activity indicator. |
+| MEDCOST     | Barriers                                | Medical cost; barrier to access care/cessation support. |
+| RENTHOM1    | Other, Barriers                         | Socioeconomic factor influencing barriers. |
+| VETERAN3    | Other, Barriers                         | Veterans may face unique cessation access issues. |
+| _EDUCAG     | Other, Barriers                         | Education group; affects literacy and access. |
+| _INCOMG     | Other, Barriers                         | Income group; influences ability to quit. |
+| USEEQUIP    | Barriers, Severity                      | Use of special equipment reflects limitations. |
+| DRNKANY5    | Cues to Action                          | Alcohol use; may cue risky behavior. |
+| DROCDY3_    | Cues to Action                          | Days drank alcohol; possible behavioral cue. |
+| _RFBING5    | Cues to Action                          | Binge drinking as a cue. |
+| _RFSEAT3    | Cues to Action, Self-Efficacy           | Seatbelt use; proxy for self-care/confidence. |
+| QLACTLM2    | Severity, Self-Efficacy, Cues to Action | Activity limitation reflects severity and behavioral cues. |
+| _STATE      | Other                                   | State of residence; contextual factor. |
+| DISPCODE    | Other                                   | Administrative code; response type. |
+| SEX         | Other                                   | Biological sex; affects prevalence. |
+| MARITAL     | Other                                   | Marital status; social influence. |
+| _HCVU651    | Other                                   | Under 65 indicator. |
+| _AGE65YR    | Other                                   | Age 65+ indicator. |
+| _AGE_G      | Other                                   | Age group indicator. |
+| _CHLDCNT    | Other, Cues to Action                   | Number of children; cue for behavioral change. |
+| CHILDREN    | Other, Cues to Action                   | Same as above; may signal parenthood role. |
+| WEIGHT2     | Other, Self-Efficacy                    | Weight may reflect health confidence. |
+| HEIGHT3     | Other, Self-Efficacy                    | Physical profile; might relate to lifestyle. |
+| _RFSMOK3    | Susceptibility, Severity                | Target variable: smoking status. |
+| YEAR        | Other                                   | Year of survey; context for analysis. |
 
 ---
 
