@@ -223,10 +223,128 @@ We select **CatBoost** Model as our winner because it performed best against oth
 
 ![](./README_files/bubble_plot_hbm_constructs.png)
 
+#### Key Insights from Feature Importance Analysis
+
+#### 1. Which Health Belief Model (HBM) Constructs Mattered Most?
+
+Using CatBoost’s feature importances, we grouped and visualized the impact of predictors by their corresponding **HBM constructs**. The bubble chart below shows Total Importance (Y-axis), Average Importance (Color), and Number of Features (Bubble Size).
+
+![Bubble Plot](./README_files/bubble_plot_hbm_constructs.png)
+
+| Construct              | Total Importance | Avg. Importance | Takeaway |
+|------------------------|------------------|------------------|----------|
+| **Perceived Barriers** | Highest          | **Highest**      | Most critical in smoking prediction—barriers like income, education, and cost matter. |
+| **Other Variables**    | Very High        | Moderate         | Demographics (e.g., age, marital status) still play a large role. |
+| **Perceived Susceptibility** | High       | Low              | Many small-risk features (e.g., chronic conditions) together matter. |
+| **Cues to Action**     | Moderate         | Moderate         | Behavioral triggers like binge drinking and checkups matter. |
+| **Self-Efficacy**      | Moderate         | Moderate         | Features like physical activity, weight, and BMI help reflect confidence to quit. |
+| **Perceived Severity** | Lower            | Lower            | Severity alone (e.g., general health, mental health) had less direct predictive power. |
+| **Perceived Benefits** | Lowest           | Lowest           | Although important theoretically, these were not strong predictors in the data.
+
+---
+
+#### 2. Top Features Driving Smoking Behavior
+
+From the final CatBoost model’s feature importances:
+
+| Rank | Feature       | Importance | HBM Construct(s)       | Interpretation |
+|------|---------------|------------|------------------------|----------------|
+| 1    | `_EDUCAG`     | 15.54      | **Perceived Barriers** | Lower education limits access to cessation resources. |
+| 2    | `_AGE65YR`    | 9.62       | Other                  | Seniors (65+) showed distinct smoking behavior trends. |
+| 3    | `MARITAL`     | 7.18       | Other                  | Social isolation or support plays a role. |
+| 4    | `_RFBING5`    | 6.01       | **Cues to Action**     | Binge drinking co-occurs with smoking. |
+| 5    | `WEIGHT2`     | 5.06       | **Self-Efficacy**      | Indicates belief in personal control over health. |
+| 6    | `CHCCOPD1`    | 4.89       | **Susceptibility**     | Respiratory illness increases smoking risk awareness. |
+| 7    | `GENHLTH`     | 4.80       | **Susceptibility**     | Self-perceived poor health is a relevant indicator. |
+| 8    | `_INCOMG`     | 4.16       | **Perceived Barriers** | Lower income directly hinders quitting efforts. |
+| 9    | `HEIGHT3`     | 3.47       | Self-Efficacy          | General health proxy; associated with confidence. |
+| 10   | `_RFBMI5`     | 3.18       | Self-Efficacy          | Weight management is linked to behavior change confidence. |
+
+Other notable contributors:
+- **Healthcare access**: `CHECKUP1`, `MEDCOST`, `PERSDOC2`
+- **Chronic illness**: `CHCKIDNY`, `DIABETE3`, `ASTHMA3`, `CVDCRHD4`
+- **Behavioral triggers**: `DRNKANY5`, `_TOTINDA`, `HIVTST6`, `PNEUVAC3`
+
+---
+
+#### 3. Final Reflections
+
+- **Perceived Barriers** are the most *actionable* levers for intervention (e.g., cost, education, insurance).
+- **Demographics** (e.g., age, marital status) remain foundational and cannot be ignored.
+- **Cues to Action** like binge drinking or routine checkups signal **opportune moments** for targeted messaging.
+- **Self-efficacy** indicators (weight, activity) matter more than perceived severity.
+
+This insight strengthens the **policy implications** of this study:
+> Effective anti-smoking strategies should prioritize **removing barriers**, **targeting at-risk groups**, and **leveraging behavioral triggers**—not just warnings about long-term severity.
+
 2. We also wanted to check if the trend was influenced by age and we can confirm that the age of the person was indeed a big contributor to the habit of smoking. I went one step further to check how the classifier behaves for different age groups and we notice that the following trend.
 
 ![](./README_files/construct_by_ageGroup.png)
 
+## 📊 HBM Construct Importance by Age Group (CatBoost Model)
+
+![Construct-by-Age](./README_files/construct_by_ageGroup.png)
+
+This chart breaks down the **predictive power of each HBM construct** across 6 age groups:
+
+| Age Group Code | Age Range     |
+|----------------|---------------|
+| 1              | 18–24         |
+| 2              | 25–34         |
+| 3              | 35–44         |
+| 4              | 45–54         |
+| 5              | 55–64         |
+| 6              | 65+           |
+
+---
+
+#### Key Observations by Construct
+
+#### 🔴 Perceived Susceptibility
+- **Highest in Group 5 (55–64)**: Older adults likely associate chronic illness and comorbidities with smoking risk.
+- **Also high in 18–24**: Young adults might have growing awareness due to early health education.
+
+#### 🔵 Perceived Severity
+- Relatively **flat across groups**, but dips slightly for 65+ (Group 6).
+- Indicates **severity alone is less differentiating** for older smokers, possibly due to desensitization or already-established behavior.
+
+#### 🟡 Perceived Benefits
+- Highest in **18–24**: Young adults show stronger belief in the benefits of quitting.
+- Dips for middle age (Groups 3–5), suggesting **behavior inertia** or resignation.
+
+#### 🟤 Perceived Barriers
+- **Most influential for middle-aged groups (2–4)**: Barriers like cost, lack of support, or time pressures may peak during life/work stress.
+- **Drops sharply in 65+**, possibly due to Medicare, time availability, or resolved stressors.
+
+#### 🟣 Cues to Action
+- **Most predictive for 18–24**, but importance **declines with age**.
+- Suggests that **external triggers** (e.g. binge drinking, peer influence, checkups) are key to early interventions.
+
+#### 🟢 Self-Efficacy
+- **Increases with age**, peaking at **65+**.
+- Older adults may feel more control over health or have more time to manage habits.
+
+#### ⚫ Other Variables
+- Slightly higher in **middle-aged adults (35–44)**.
+- These reflect demographic background rather than psychological determinants.
+
+---
+
+#### Strategic Insights
+
+- **18–24 (Group 1)**: Most influenced by **Cues to Action** and **Perceived Benefits**. Campaigns for this group should focus on rewards of quitting, peer triggers, and visible lifestyle changes.
+- **25–54 (Groups 2–4)**: Dominated by **Barriers**. Interventions should remove economic, social, and access-related obstacles.
+- **55–64 (Group 5)**: Influenced most by **Susceptibility**. Messaging about risk awareness and disease consequences resonates here.
+- **65+ (Group 6)**: High on **Self-Efficacy**, **Susceptibility**, and **Benefits**. They may be most ready for cessation with the right support—empowerment is key.
+
+---
+
+#### Final Takeaway
+
+**Interventions must be tailored by age**:
+- Youth: Highlight **benefits** and respond to **triggers**.
+- Mid-life: Tackle **barriers** and link smoking to **long-term damage**.
+- Seniors: **Empower** them with support, reassurance, and health management.
 
 ## 8. Future Improvements
 
