@@ -10,9 +10,9 @@ Since habits like smoking stems from psychological normalization of the act, in 
 
 Some questions I wanted to answer through this project are:
 
-> **Question 1:** What constructs defined by Health Belief Model (HBM) contribute most towards the habit of smoking ? Does this trend vary by age group ?
+> **Question 1:** What constructs defined by Health Belief Model (HBM) contribute most towards the habit of smoking ? What are some policy implications?
 
-> **Question 2:** Are there any patterns on how people respond to survey. Are they honest about it ? Does the pattern vary by age group ?
+> **Question 2:** Does this trend vary by age group ?
 
 
 ## 1. Data
@@ -206,7 +206,7 @@ Here's a summary of performance of Base and Tuned Catboost models
 
 > 2. **LightGBM:** I used the encoded dataset since this algorithm does better when encoded explicity before training. This is mainly a choice to see if I will get similar results of Catboost in less time and it successfully met my assumption. Here's a breakdown of model evaluation metrics of Base and Tuned LightGBM models
 
-### Model Comparison Chart
+#### Model Comparison Chart
 
 | Model           | Accuracy  | Precision | Recall   | F1-Score | ROC-AUC  | PR-AUC   | Training Time |
 |-----------------|-----------|-----------|----------|----------|----------|----------|---------------|
@@ -217,11 +217,10 @@ Here's a summary of performance of Base and Tuned Catboost models
 
 We select **CatBoost** Model as our winner because it performed best against other models for Recall and second best in PR-AUC, ROC-AUC, F1-Score compared to other models. It is considerably high in Training time, but is still the second best from the above table
 
-### Analysis
+## Analysis
 
+### Question 1: What constructs defined by Health Belief Model (HBM) contribute most towards the habit of smoking ? What are some policy implications?
 1. Since we are interested to know which constructs emerge as prominent determinant of smoking, we aggregate total_importance and average_imporatance scores from top feature set of CatBoost model and plot a bubble plot showing the effect of each construct on the target variable.
-
-![](./README_files/bubble_plot_hbm_constructs.png)
 
 #### Key Insights from Feature Importance Analysis
 
@@ -277,11 +276,10 @@ Other notable contributors:
 This insight strengthens the **policy implications** of this study:
 > Effective anti-smoking strategies should prioritize **removing barriers**, **targeting at-risk groups**, and **leveraging behavioral triggers**—not just warnings about long-term severity.
 
+### Question 2: Does this trend vary by age group ?
 2. We also wanted to check if the trend was influenced by age and we can confirm that the age of the person was indeed a big contributor to the habit of smoking. I went one step further to check how the classifier behaves for different age groups and we notice that the following trend.
 
-![](./README_files/construct_by_ageGroup.png)
-
-## 📊 HBM Construct Importance by Age Group (CatBoost Model)
+#### HBM Construct Importance by Age Group (CatBoost Model)
 
 ![Construct-by-Age](./README_files/construct_by_ageGroup.png)
 
