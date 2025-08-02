@@ -298,31 +298,31 @@ This chart breaks down the **predictive power of each HBM construct** across 6 a
 
 #### Key Observations by Construct
 
-#### 🔴 Perceived Susceptibility
+#### Perceived Susceptibility
 - **Highest in Group 5 (55–64)**: Older adults likely associate chronic illness and comorbidities with smoking risk.
 - **Also high in 18–24**: Young adults might have growing awareness due to early health education.
 
-#### 🔵 Perceived Severity
+#### Perceived Severity
 - Relatively **flat across groups**, but dips slightly for 65+ (Group 6).
 - Indicates **severity alone is less differentiating** for older smokers, possibly due to desensitization or already-established behavior.
 
-#### 🟡 Perceived Benefits
+#### Perceived Benefits
 - Highest in **18–24**: Young adults show stronger belief in the benefits of quitting.
 - Dips for middle age (Groups 3–5), suggesting **behavior inertia** or resignation.
 
-#### 🟤 Perceived Barriers
+#### Perceived Barriers
 - **Most influential for middle-aged groups (2–4)**: Barriers like cost, lack of support, or time pressures may peak during life/work stress.
 - **Drops sharply in 65+**, possibly due to Medicare, time availability, or resolved stressors.
 
-#### 🟣 Cues to Action
+#### Cues to Action
 - **Most predictive for 18–24**, but importance **declines with age**.
 - Suggests that **external triggers** (e.g. binge drinking, peer influence, checkups) are key to early interventions.
 
-#### 🟢 Self-Efficacy
+#### Self-Efficacy
 - **Increases with age**, peaking at **65+**.
 - Older adults may feel more control over health or have more time to manage habits.
 
-#### ⚫ Other Variables
+#### Other Variables
 - Slightly higher in **middle-aged adults (35–44)**.
 - These reflect demographic background rather than psychological determinants.
 
