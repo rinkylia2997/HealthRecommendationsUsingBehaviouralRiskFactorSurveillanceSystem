@@ -4,9 +4,8 @@
 On an average there were ~7 million deaths globally in the year 2023 due to smoking, of which ~500,000 deaths were from USA alone. If we evaluate the trends of smoking from 2011 - 2023, we notice that there is a steady decline in smoking prevalence from (15-19%) during 2011-2015, approx. (11-12%) during 2022. Some observations include:
 > * In the U.S, smoking rates have steadily declined over the last decade thanks to policy initiatives, media campaigns, taxation, and public health programs.
 > * Globally, while smoking rates have fallen, population growth has driven the absolute number of smokers upward, and the smoking-related death toll remains persistently high.
-> * Notably, older adults (65+) in the U.S. buck the trend, showing a modest increase in smoking compared to broader declines in younger cohorts
 
-Since habits like smoking stems from psychological normalization of the act, in this project I wanted to evaluate what constructs of the Health Belief Model (HBM) influence it. The bigger effort is also to improve Public policies surrounding dangers of smoking in a way that can help smokers identify their behaviour patterns. I believe with proper messaging of the dangers of smoking but delving into psychological factors, we can bring about real change in the number of current smokers.
+Since habits like smoking stems from psychological normalization of the act, in this project I wanted to evaluate what constructs of the Health Belief Model (HBM) influence it. The bigger effort is also to improve Public policies surrounding dangers of smoking in a way that can help smokers identify their behaviour patterns. I believe with proper messaging of the dangers of smoking but delving into psychological factors, we can bring about real change in this behaviour
 
 Some questions I wanted to answer through this project are:
 
@@ -18,7 +17,7 @@ Some questions I wanted to answer through this project are:
 ## 1. Data
 
 The Behavioral Risk Factor Surveillance System (BRFSS) is the nation's premier system of health-related telephone surveys that collect state data about U.S. residents regarding their health-related risk behaviors, chronic health conditions, and use of preventive services. Factors assessed by the BRFSS include tobacco use, health care coverage, HIV/AIDS knowledge or prevention, physical activity, and fruit and vegetable consumption. Data are collected from a random sample of adults (one per household). 
-BRFSS Dataset from Kaggle API was gathered for years 2011-2015 and contained 2380047 rows and 645 columns. The reason to choose this was because I wanted to have as many features as possible to evaluate the predictors of smoking.To view the BRFSS data using Kaggel API and the code book report explaining the variables click on the links below:
+BRFSS Dataset from Kaggle API was gathered for years 2011-2015 and contained 2380047 rows and 645 columns. The reason to choose this was because I wanted to have as many features as possible to evaluate the predictors of smoking.To view the BRFSS data using Kaggle API and the code book report explaining the variables click on the links below:
 
 * [BRFSS Kaggle Dataset](https://www.kaggle.com/datasets/cdc/behavioral-risk-factor-surveillance-system/data)
 
@@ -35,15 +34,15 @@ The Health Belief Model is a psychological framework developed by Public Health 
 1. **Perceived Susceptibility:** How likely is an individual susceptible to the risks posed by smoking 
 i.e. If the individual has heart problems does it make him more likely to be affected negatively by smoking ?
 
-2. **Perceived Severity:** How likely is an individual at risk of smoking related health problems i.e. If the person has a family history of heart disease but personally has none, does he implicitly place himself in the low risk category ?
+2. **Perceived Severity:** How serious are the consequences if the disease occurs i.e. If the person has a family history of heart disease but personally has none, does he implicitly place himself in the low risk category ?
 
-3. **Perceived Benefits:** How likely is he going to be rewarded if he chooses to stop smoking i.e. will the person be more excited to hit the gym since his lungs feel better ?
+3. **Perceived Benefits:** It is the belief that a certain action will reduce the risk or severity of the condition i.e. will the person be more excited to hit the gym since his lungs feel better ?
 
-4. **Perceived Barriers:** What factors are causing him to not be able to quit smoking ?
+4. **Perceived Barriers:** It accounts for the barriers, obstacles or challenges to taking that action i.e  What factors are causing him to not be able to quit smoking ?
 
-5. **Cues to Action:** Events that motivate people to take action in changing their smoking habits are crucial determinants of change.
+5. **Cues to Action:** External Events or people or factors that motivate people to take action in changing their smoking habits are crucial determinants of change.
 
-6. **Self Efficiency:** A very important variable is the belief in being able to successfully quit the smoking behavior required to produce the desired outcomes
+6. **Self Efficiency:** A very important variable is the self-belief in being able to successfully quit the smoking behavior required to produce the desired outcomes
 
 7. **Other Variables:** Demographic, sociopsychological, and structural variables affect an individual's perceptions of quitting smoking.
 
