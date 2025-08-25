@@ -48,7 +48,7 @@ i.e. If the individual has heart problems does it make him more likely to be aff
 
 **WINNER: Smoking Prediction Model with good recall and F1-score + HBM construct mapping**
 
-I chose to build a prediction model with higher Recall and F1-score to be aggressive in identifying smokers. As a next step, these features were mapped to the constructs per its definition in the [Code Book Report](https://www.cdc.gov/brfss/annual_data/2015/pdf/codebook15_llcp.pdf). 
+I chose to build a prediction model with higher Recall and F1-score to be aggressive in identifying smokers since it was an imbalanced dataset. As a next step, these features were mapped to the constructs per its definition in the [Code Book Report](https://www.cdc.gov/brfss/annual_data/2015/pdf/codebook15_llcp.pdf). 
 
 ## 3. Data Cleaning 
 
