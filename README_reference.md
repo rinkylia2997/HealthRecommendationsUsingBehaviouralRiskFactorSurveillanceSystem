@@ -351,7 +351,12 @@ This chart breaks down the **predictive power of each HBM construct** across 6 a
 
 ## 9. Credits
 
-Thanks to Vinit Koshti, my springboard mentor who helped me combine my interest in public health and behavioral psychology to a tangible dataset. I really helped me narrow down my problem statement. 
+Thanks to Jaleed Khan and Vinit Koshti, my springboard mentor who helped me combine my interest in public health and behavioral psychology to a tangible dataset. I really helped me narrow down my problem statement.
+
+
+## Part 2
+
+## 
 
 
 
