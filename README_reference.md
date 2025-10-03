@@ -351,13 +351,240 @@ This chart breaks down the **predictive power of each HBM construct** across 6 a
 
 ## 9. Credits
 
-Thanks to Jaleed Khan and Vinit Koshti, my springboard mentor who helped me combine my interest in public health and behavioral psychology to a tangible dataset. I really helped me narrow down my problem statement.
+Thanks to Jaleed Khan and Vinit Koshti, my springboard mentors who helped me combine my interest in public health and behavioral psychology to a tangible dataset. I really helped me narrow down my problem statement.
 
 
-## Part 2
+# Part 2 - Policy Simulations using Synthetic Data Interventions
 
-## 
+## Introduction
 
+I wanted to go one step further by trying to suggest some data-driven policy recommendations that the MPOWER initiative could potentially incorporate to help people who are trying to quit smoking. The idea was to identify the crucial levers (features) using SHAP plots and modify feature values by providing sufficient context and ssumptions for various interventions. 
+
+During this extension of the project, various steps had to be taken to make sure analysis could be done including some Evaluation of exisiting gaps in Data (Pre-DataWrangling), Data Wrangling, EDA and Modeling to support our interventions both structurally (via data transformations) and functionally (choice of appropriate Modeling techniques and evidence for intervention strategies). Let's dive into the details of these tasks and its outcomes -
+
+## Pre-DataWrangling Steps to determine if we can use the current dataset to simulate various policy scenarios 
+
+1. Perform SHAP analysis on our prior model (CatBoost Model) to find out the most impactful levers guiding prediction of smoking
+2. Perform SHAP analysis across age group
+
+We perform SHAP analysis on complete model and across age groups because we wanted to guide the selection of crucial features for synthetic data interventions that affected every age group. It was ultimately a comprehensive evaluation of existing data features. However, we noticed that the features were not very interpretable interms of its effects on smoking. To resolve it we planned some data cleaning strategies including converting some values to NaN, preserving order of features etc. 
+
+Here's an image of SHAP plot on our prior selected CatBoost Model
+
+![SHAP Plot (Pre-DataWrangling)](./README_files/part2/001-pre-datawrangling-shap_plot.png)
+
+**Outcomes** - <br>
+1. Our previous model has NaNs encoded either as 7 or 9, which needs to be handled to plot informative SHAP plots
+2. Fix the order/encoding for some of the Ordinal variables to generate meaningful results on our SHAP plots
+3. Label encode our variables to help in SHAP plots
+
+## Data Wrangling
+
+We need to modify our original dataset that we fed into our selected Catboost Model to evaluate the influence of each feature towards smoking prediction. Some things we performed to guide necessary dataset transformations were -
+
+1. Import dataset as train/test splits
+2. Verify if all categorical features (ordinal and nominal) encodings made sense and preserved its meaning.
+3. Evaluate if dropping values of 7 or 9 which represented NaN or Missing values reduced the data size significantly.
+4. Generate a summary of rows with missing values in decreasing order of missingness count
+
+**Outcomes/Observations**<br>
+1. Large number of 7/9 values that don't given us any information.<br>
+Ans. Let's encode 7 and 9 to a single value 9 and label it as "Unknown Value"
+
+2. Some occurances of NaN needs to be handled <br>
+Ans. Assign it a code of 7 like above since we don't know the value
+
+3. Fix nominal ordering for categorical features like `GENHLTH` and `_RFHLTH` <br>
+Ans. Currently the ordering for `GENHLTH` is 1> 2> 3> 4> 5> 7, we need to make it 1 < 2 < 3 < 4 < 5 < 7;
+    The ordering for `_RFHLTH` is 1 > 2 > 7, we need to make it 1 < 2 < 7
+
+4. Recode 7 to NaN, since Catboost Natively handles NaN values
+
+##  Exploratory Data Analysis
+
+### We retrain our dataset using CatBoost Model that was wrangled in previous section `101-DataWrangling-MPOWER.ipynb` notebook, to compute SHAP plots to identify appropriate policy levers
+
+1. Plot generic SHAP plot
+2. Plot SHAP across age groups to crucial age-based levers
+
+NOTE: We train the entire dataset (train + test) to evaluate potential confounders/mediators/colliders. This is not our baseline model that will be used for future steps
+
+Some tasks performed are -
+
+1. Import new train/test data that has dealt with NaN
+2. Import nominal/ordinal feature lists
+3. Train new CatBoost Model for SHAP analysis on modified features
+4. Train new CatBoost Model for SHAP analysis on modified features across age-groups
+
+## Outcomes/Observations of SHAP plots  
+
+![SHAP Plot (Post-DataWrangling)](./README_files/part2/002-post-data-wrangling-plot.png)
+
+### Key Financial Barriers for Smokers:
+The money-related variables that represent crucial levers and barriers for smokers include:<br>
+
+**INCOME (_INCOMG)** - Appears consistently across all age groups as a moderate to strong predictor, suggesting income level significantly impacts smoking behaviors/cessation success<br>
+**Medical Costs (MEDCOST)** - Shows up as a predictor across groups, indicating healthcare affordability affects smoking-related outcomes<br>
+**Education (_EDUCAG)** - While not directly money, education strongly correlates with earning potential and appears as a top predictor across all age groups<br>
+**Healthcare Coverage (_HCVU651)** - Insurance status appears as a factor, representing financial access to smoking cessation resources<br>
+
+These financial variables suggest that economic barriers—particularly income level, healthcare costs, and insurance coverage—are significant factors in smoking behaviors across all age demographics, with income showing the most consistent influence as a barrier to smoking cessation.
+
+To make appropriate synthetic data interventions for policy simulations, we need to figure out if the features that came as the top features for smoking predictions can be categorized into `Confounders`, `Mediators` or `Colliders`. Here's an analysis of which of these features could be considered as something based on a descriptive understanding of what the feature is and what each of the categories are - 
+
+#### _Confounder_ <br>
+Affects both exposure (X) and outcome (Y).<br>
+Path: Confounder → X and Confounder → Y.<br>
+
+Example: Age confounds Income (X) and Smoking (Y).<br>
+    Adjustment needed (to remove bias).
+
+#### _Mediator_
+
+Lies on the causal path from X to Y.<br>
+Path: X → Mediator → Y.<br>
+
+Example: Income (X) → Stress (mediator) → Smoking (Y).<br>
+    Don’t adjust if you want total effect of X.
+    Do adjust if you want direct effect of X, excluding mediation.
+
+#### _Collider_
+
+A variable that is caused by both X and Y.<br>
+Path: X → Collider ← Y.<br>
+
+Example: Both Income and Smoking affect COPD diagnosis.<br>
+    Never adjust → it opens a spurious path (collider bias).
+
+### Are These Plausible Confounders?
+
+#### _`MEDCOST` / `HLTHPLN1` (Access to care):_
+
+Strongly related to income.May be related to smoking (lower access = more smoking). But  these are often mediators, not confounders → i.e., income influences healthcare access, which influences smoking.
+
+#### _`GENHLTH` / `PHYSHLTH`/ `MENTHLTH` (Health status):_
+
+Lower income → worse self-reported health. Smokers report worse health too. Plausible confounders.
+
+#### _`_RFBING5` (Binge drinking):_
+
+Associated with lower income. Associated with smoking. Plausible behavioral confounder.
+
+#### _`CHCCOPD1` (COPD diagnosis):_
+
+Associated with smoking (strong). But less directly with income. More likely an outcome of smoking, not a confounder → could even be a collider if included.
+
+### Reasonableness 
+**Good confounder candidates:** GENHLTH, PHYSHLTH, MENTHLTH, _RFBING5.
+**More like mediators:** MEDCOST, HLTHPLN1.
+**More like outcomes / colliders:** CHCCOPD1.
+
+### How to Test for Confounders
+
+1. Check associations:
+1.1. Each candidate variable ↔ _INCOMG. <br>
+1.2. Each candidate variable ↔ _RFSMOK3. <br>
+
+2. Compare regression models:
+2.1. Crude: smoking ~ income. <br>
+2.2 Adjusted: smoking ~ income + candidate. <br>
+
+If the income coefficient changes ≥10%, candidate is a confounder.
+
+## Outcomes/ Observations from Confounder tests - data driven analysis to recommend impactful synthetic data interventions
+
+### 1. Exposure variable = _INCOMG
+
+**Strong confounders:** _GENHLTH, MENTHLTH, EDUCAG, MARITAL._
+
+**Moderate confounders:** _MEDCOST, CHCCOPD1, HLTHPLN1 (some strata)._
+
+**Weak/non-confounders:** _ _RFBING5 (binge drinking), _TOTINDA (activity), some insurance variables._
+
+
+### 2. Exposure variable = _EDUCAG
+
+**Strong confounders:** _GENHLTH, _INCOMG, MEDCOST, HLTHPLN1, _HCVU651, PHYSHLTH, MENTHLTH._
+
+**Moderate confounders:** _RFBING5, CHCCOPD1, _TOTINDA_
+
+Education’s relationship to smoking is heavily confounded by income. Once you adjust for income, the education–smoking association weakens substantially.
+Health access variables (MEDCOST, HLTHPLN1, _HCVU651) also explain part of the education–smoking link. This suggests people with more education may smoke less partly because they have better access to affordable healthcare and insurance.
+
+General/mental/physical health matter especially at low and middle education levels, indicating a clustering of disadvantage.
+
+## Modeling & Synthetic Data Intervention
+
+Now that we have an idea of the top confounders/mediators, lets' discuss 3 different scenarios that we compared against our baseline CatBoost Trained model - 
+
+### Scenario 1 — “Expand Mental Health Access”
+
+**Goal:** _Reduce smoking by improving population mental health (MENTHLTH)._ <br>
+**Rationale:** _MENTHLTH showed the largest confounding effect (up to ~28% change). Improving mental health should lower smoking propensity_.
+
+#### Intervention rule (synthetic):
+
+For people in lowest two income groups (_INCOMG levels 1 & 2), reduce MENTHLTH measure by 20–30% (e.g. move categorical mental-health scores one level towards "better").
+
+We shift 30% of respondents coded poor → fair, fair→good (stochastic selection within target group).
+
+#### Metrics to report
+
+expected_smokers_base and expected_smokers_sim (absolute counts)
+
+Absolute and percent reduction
+
+Stratified results for _INCOMG groups
+
+95% CI via bootstrap: resample rows with replacement, recompute predicted sums 1000x
+
+#### Caveats
+
+If MENTHLTH is a mediator of income → smoking, changing it simulates a direct policy on mental health (which is exactly what we want). If it is partly caused by smoking, some reverse causality may bias estimates.
+
+### Scenario 2 — “Education Uplift Program”
+
+**Goal:** _Simulate the impact of improving education (health literacy / adult education) in low-income groups._ <br>
+**Rationale:** _ _EDUCAG showed up to ~29% effect on the income coefficient — biggest lever found._
+
+#### Intervention rule:
+
+For _INCOMG = 1 & 2, upgrade one education level for 20% of respondents (e.g., Less than HS → High School or HS → Some College). This is a synthetic proxy for adult education / literacy programs.
+
+#### Metrics & checks
+
+Absolute and percent change in expected smokers overall and within _INCOMG groups.
+
+Evaluate distributional effects: does benefit concentrate in certain ages?
+
+Sensitivity: vary upgrade fraction (10%, 20%, 50%) and compare. (Maybe)
+
+#### Caveats
+
+Education is long-term; real-world effect sizes may be delayed. This simulation represents an immediate change in the predictor and estimates short-term impact under the model.
+
+### Scenario 3 — “Remove Medical Cost Barriers + Insurance Outreach”
+
+**Goal:** _Reduce smoking by lowering reported medical cost barriers (MEDCOST) and increasing perceived insurance access (HLTHPLN1) in low/mid-income groups. We observe a improvement in GENHLTH which has also been modeled._ <br>
+**Rationale:** _MEDCOST , HLTHPLN1 and GENHLTH changed the income coefficient 11–21% — an actionable policy lever (subsidies, free cessation treatment)._
+
+#### Intervention rule:
+
+For _INCOMG in [1,2,3], set MEDCOST -> No barrier for 25% of those who reported cost barrier.
+
+For same groups, flip HLTHPLN1 to insured for 15–25% (simulate outreach/coverage).
+
+#### Metrics
+
+Expected smokers baseline vs simulated
+
+Subgroup breakdown by income level and by whether they received benefit
+
+Cost-effectiveness estimate (if you can attach program cost per person)
+
+#### Caveats
+
+MEDCOST and HLTHPLN1 and ripple effect of GENHLTH may be mediators of income; changing them simulates direct access interventions (e.g., free cessation services) — good policy-relevant scenario.
 
 
 
