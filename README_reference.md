@@ -528,6 +528,8 @@ For people in lowest two income groups (_INCOMG levels 1 & 2), reduce MENTHLTH m
 
 We shift 30% of respondents coded poor → fair, fair→good (stochastic selection within target group).
 
+We also perform sensitivity analysis for % change in MENTHLTH by (20%, 50% and 70%) for lowest income groups 1 and 2
+
 #### Metrics to report
 
 expected_smokers_base and expected_smokers_sim (absolute counts)
@@ -541,6 +543,74 @@ Stratified results for _INCOMG groups
 #### Caveats
 
 If MENTHLTH is a mediator of income → smoking, changing it simulates a direct policy on mental health (which is exactly what we want). If it is partly caused by smoking, some reverse causality may bias estimates.
+
+#### Outcomes
+
+#### 1. Graphs
+
+#### 1.1 MENTHLTH distribution at 20% synthetic data intervention
+
+![MENTHLTH Distribution (20%)](./README_files/part2/003-scenario1_20pct.png)
+
+#### 1.2 MENTHLTH distribution at 50% synthetic data intervention
+
+![MENTHLTH Distribution (50%)](./README_files/part2/004-scenario1_50pct.png)
+
+#### 1.3 MENTHLTH distribution at 70% synthetic data intervention
+
+![MENTHLTH Distribution (70%)](./README_files/part2/005-scenario1_70pct.png)
+
+#### 2. Change in _RFSMOK3
+
+Scenario A (Mental Health Improvement) - Pct Change: 20%
+Total Baseline Smokers: 187,338
+Total Scenario Smokers: 187,203
+Delta Smokers: -136
+Percentage Change in Smokers: -0.07%
+--------------------------------------------------
+Scenario A (Mental Health Improvement) - Pct Change: 50%
+Total Baseline Smokers: 187,338
+Total Scenario Smokers: 186,993
+Delta Smokers: -345
+Percentage Change in Smokers: -0.18%
+--------------------------------------------------
+Scenario A (Mental Health Improvement) - Pct Change: 70%
+Total Baseline Smokers: 187,338
+Total Scenario Smokers: 186,862
+Delta Smokers: -477
+Percentage Change in Smokers: -0.25%
+--------------------------------------------------
+
+#### 2.1 Graph showing % change in _RFSMOK3
+
+![Scenario A (Mental Health Improvement)](./README_files/part2/006-scenario1-targetVar.png)
+
+#### 2.2 Interpretation
+
+#### 2.2.1 RESULTS - Scenario A: Mental Health Improvement
+
+This scenario assesses the impact of improving mental health conditions across the population on smoking prevalence.
+
+| **Pct Improvement** | **Baseline Smokers** | **Scenario Smokers** | **Δ Smokers** | **% Change** |
+| ------------------- | -------------------- | -------------------- | ------------- | ------------ |
+| 20%                 | 187,338              | 187,203              | -136          | **-0.07%**   |
+| 50%                 | 187,338              | 186,993              | -345          | **-0.18%**   |
+| 70%                 | 187,338              | 186,862              | -477          | **-0.25%**   |
+
+#### 2.2.2. Insights
+
+1. The reduction in smokers is small but consistent with increasing levels of mental health improvement.
+2. A 20% improvement in mental health corresponds to 136 fewer smokers, a 0.07% decline.
+3. A 70% improvement produces the largest effect, with 477 fewer smokers (≈ 0.25% reduction).
+
+The impact appears marginal, suggesting that mental health improvements alone may have limited direct influence on smoking behavior.
+
+#### 2.2.3 Interpretation
+
+While mental health improvements show a positive direction (fewer smokers), the magnitude of change is modest.
+This suggests:
+1. Smoking behavior is multifactorial — influenced not only by mental health but also by education, income, social norms, and access to cessation programs.
+2. Mental health support may play a supportive role but is not sufficient by itself to drive large reductions in smoking.
 
 ### Scenario 2 — “Education Uplift Program”
 
@@ -563,6 +633,74 @@ Sensitivity: vary upgrade fraction (10%, 20%, 50%) and compare. (Maybe)
 
 Education is long-term; real-world effect sizes may be delayed. This simulation represents an immediate change in the predictor and estimates short-term impact under the model.
 
+#### Outcomes
+
+#### 1. Graphs
+
+#### 1.1 _EDUCAG distribution at 20% synthetic data intervention
+
+![_EDUCAG Distribution (20%)](./README_files/part2/007-scenario2-20pct.png)
+
+#### 1.2 _EDUCAG distribution at 50% synthetic data intervention
+
+![_EDUCAG Distribution (50%)](./README_files/part2/008-scenario2-50pct.png)
+
+#### 1.3 _EDUCAG distribution at 70% synthetic data intervention
+
+![_EDUCAG Distribution (70%)](./README_files/part2/009-scenario2-70pct.png)
+
+#### 2. Change in _RFSMOK3
+
+Scenario B (Education Uplift) - Pct Change: 20%
+Total Baseline Smokers: 187,338
+Total Scenario Smokers: 186,363
+Delta Smokers: -975
+Percentage Change in Smokers: -0.52%
+--------------------------------------------------
+Scenario B (Education Uplift) - Pct Change: 50%
+Total Baseline Smokers: 187,338
+Total Scenario Smokers: 184,895
+Delta Smokers: -2,444
+Percentage Change in Smokers: -1.30%
+--------------------------------------------------
+Scenario B (Education Uplift) - Pct Change: 70%
+Total Baseline Smokers: 187,338
+Total Scenario Smokers: 183,904
+Delta Smokers: -3,435
+Percentage Change in Smokers: -1.83%
+--------------------------------------------------
+
+#### 2.1 Graph showing % change in _RFSMOK3
+
+![Scenario B (Education Improvement)](./README_files/part2/010-scenario2-targetVar.png)
+
+#### 2.2 Interpretation
+
+#### 2.2.1 RESULTS - Scenario B: Education Uplift
+
+This scenario evaluates how improving educational attainment levels impacts smoking prevalence.
+
+| **Pct Improvement** | **Baseline Smokers** | **Scenario Smokers** | **Δ Smokers** | **% Change** |
+| ------------------- | -------------------- | -------------------- | ------------- | ------------ |
+| 20%                 | 187,338              | 186,363              | -975          | **-0.52%**   |
+| 50%                 | 187,338              | 184,895              | -2,444        | **-1.30%**   |
+| 70%                 | 187,338              | 183,904              | -3,435        | **-1.83%**   |
+
+#### 2.2.2 Insights
+
+1. Education uplift leads to a steady decline in smoking rates.
+2. A 20% improvement yields nearly 1,000 fewer smokers.
+3. At 70% improvement, the smoker population decreases by 3,435, equating to a 1.83% reduction.
+
+The relationship is approximately linear, showing consistent impact with increased education levels.
+
+#### 2.2.3 Interpretation
+
+1. Education is a protective factor against smoking behavior.
+2. As individuals attain higher education, they are more aware of health risks and less likely to engage in smoking.
+
+These results suggest that policies investing in education could lead to public health benefits beyond academics, such as lower smoking prevalence.
+
 ### Scenario 3 — “Remove Medical Cost Barriers + Insurance Outreach”
 
 **Goal:** _Reduce smoking by lowering reported medical cost barriers (MEDCOST) and increasing perceived insurance access (HLTHPLN1) in low/mid-income groups. We observe a improvement in GENHLTH which has also been modeled._ <br>
@@ -570,9 +708,11 @@ Education is long-term; real-world effect sizes may be delayed. This simulation 
 
 #### Intervention rule:
 
-For _INCOMG in [1,2,3], set MEDCOST -> No barrier for 25% of those who reported cost barrier.
+For _INCOMG in [1,2,3], 
 
-For same groups, flip HLTHPLN1 to insured for 15–25% (simulate outreach/coverage).
+1. Set MEDCOST -> No barrier for 20% of those who reported cost barrier. For same groups, flip HLTHPLN1 to insured for 20% (simulate outreach/coverage). GENHLTH as a result of improved MEDCOST and HLTHPLN1 by 40%. These ratios are picked up from the Confounder Analysis in EDA step.
+
+2. Set MEDCOST -> No barrier for 20% of those who reported cost barrier. For same groups, flip HLTHPLN1 to insured for 30% (simulate outreach/coverage). GENHLTH as a result of improved MEDCOST and HLTHPLN1 by 50%. These ratios are picked up from the Confounder Analysis in EDA step.
 
 #### Metrics
 
@@ -586,5 +726,70 @@ Cost-effectiveness estimate (if you can attach program cost per person)
 
 MEDCOST and HLTHPLN1 and ripple effect of GENHLTH may be mediators of income; changing them simulates direct access interventions (e.g., free cessation services) — good policy-relevant scenario.
 
+#### Outcomes
+
+#### 1. Graphs
+
+#### 1.1 MEDCOST, HLTHPLN1, GENHLTH distribution at 20%, 20%, 40% synthetic data intervention
+
+![C1 Distribution (20%)](./README_files/part2/011-scenario3-C1.png)
+
+#### 1.2 MEDCOST, HLTHPLN1, GENHLTH distribution at 40%, 60%, 70% synthetic data intervention
+
+![C2 Distribution (50%)](./README_files/part2/012-scenario3-C2.png)
+
+#### 2. Change in _RFSMOK3
+
+Scenario C (Medical Cost: 0.2, Insurance Outreach: 0.2, General Health: 0.4) - Pct Change: 70%
+Total Baseline Smokers: 187,338
+Total Scenario Smokers: 186,064
+Delta Smokers: -1,275
+Percentage Change in Smokers: -0.68%
+--------------------------------------------------
+Scenario C (Medical Cost: 0.4, Insurance Outreach: 0.6, General Health: 0.7) - Pct Change: 70%
+Total Baseline Smokers: 187,338
+Total Scenario Smokers: 185,101
+Delta Smokers: -2,237
+Percentage Change in Smokers: -1.19%
+--------------------------------------------------
+
+#### 2.1 Graph showing % change in _RFSMOK3
+
+![Scenario C (Medical Cost, Insurance, Genhlth Improvement)](./README_files/part2/013-scenario3-targetVar.png)
+
+#### 2.2 Interpretation
+
+#### 2.2.1 RESULTS - Scenario C: Combined Intervention (Medical Cost + Insurance Coverage + General Health)
+
+This scenario evaluates the combined impact of reducing medical costs, expanding insurance coverage, and improving general health conditions on smoking prevalence.
+Each intervention level reflects progressively stronger improvements in all three dimensions.
+
+| Intervention Level | MEDCOST Change | INSURANCE Change | GENHLTH Change | Baseline Smokers | Scenario Smokers | Δ Smokers | % Change |
+| ------------------ | -------------- | ---------------- | -------------- | ---------------- | ---------------- | --------- | -------- |
+| Moderate (C1)      | -20%           | +20%             | +40%           | 187,338          | 186,600          | -738      | -0.39%   |
+| Strong (C2)        | -40%           | +60%             | +70%           | 187,338          | 185,200          | -2,138    | -1.14%   |
+
+
+#### 2.2.2 Insights
+
+The combined approach achieves greater reductions in smoking prevalence compared to single-factor scenarios (A or B).
+
+1. A moderate intervention (C1) results in 738 fewer smokers, a 0.39% decline.
+2. A strong intervention (C2) leads to 2,138 fewer smokers, a 1.14% decline.
+
+Effects are additive — simultaneous improvements in cost, insurance, and health amplify the overall impact.
+
+#### 2.2.3 Interpretation
+
+1. Scenario C demonstrates that multi-dimensional policy interventions are more effective than targeting individual determinants in isolation.
+2. Reduced medical costs ease financial barriers to care, expanded insurance improves access to cessation programs, and better general health reflects increased well-being and readiness to quit.
+3. Even with strong interventions, smoking prevalence declines by about 1%, suggesting:
+4. Structural policies help but must be combined with behavioral strategies (e.g., counseling, education, nicotine replacement).
+
+Comprehensive public health programs addressing cost, access, and behavior yield the greatest impact.
+
+#### 2.2.4 Takeaway
+
+Scenario C confirms that integrated interventions deliver synergistic benefits, though the total reduction remains moderate. A combination of economic, access-based, and behavioral supports is necessary to achieve substantial declines in smoking rates.
 
 
