@@ -1,6 +1,9 @@
 # Data
 /data/
 
+# Report - large html file
+/reports/001-rawdata-profiling.html
+
 # Mac OS-specific storage files
 .DS_Store
 
